@@ -22,12 +22,14 @@ A React Native Expo application that displays blog posts from JSONPlaceholder AP
 ## Installation
 
 1. Clone the repository:
+
 ```bash
-git clone <repository-url>
+git clone <https://github.com/DeveloperTunde/SkiptonBS.git>
 cd SkiptonBS
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
@@ -35,6 +37,7 @@ npm install
 ## Running the App
 
 ### Development
+
 ```bash
 npm start
 ```
@@ -46,6 +49,7 @@ This will open the Expo Dev Tools. You can then:
 - Scan QR code with Expo Go app on your physical device
 
 ### Specific Platforms
+
 ```bash
 npm run android    # Android
 npm run ios        # iOS (macOS only)
@@ -55,11 +59,13 @@ npm run web        # Web
 ## Testing
 
 Run the test suite:
+
 ```bash
 npm test
 ```
 
 Run tests in watch mode:
+
 ```bash
 npm run test:watch
 ```
