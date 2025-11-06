@@ -1,16 +1,15 @@
 import React from "react";
 import { View, StyleSheet, FlatList, ListRenderItem } from "react-native";
-import { usePosts } from "../hooks/usePosts";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import PostCardSkeleton from "../components/PostCardSkeleton";
+import { Button, Text } from "react-native-paper";
+import { usePosts } from "@hooks/usePosts";
+import PostCard from "@components/PostCard";
+import LoadingIndicator from "@components/LoadingIndicator";
+import ErrorView from "@components/ErrorView";
 import { RootStackParamList } from "../types/navigation";
 import { Post } from "../types/post";
-
-import PostCard from "../components/PostCard";
-import PostCardSkeleton from "../components/PostCardSkeleton";
-import LoadingIndicator from "../components/LoadingIndicator";
-import ErrorView from "../components/ErrorView";
-import { Button, Text } from "react-native-paper";
 
 type PostsScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,

@@ -2,7 +2,7 @@ import React from "react";
 import { View, StyleSheet, ScrollView } from "react-native";
 import { Text, Card, Chip } from "react-native-paper";
 import { Post } from "../types/post";
-import { formatDateTimeSafe } from "../utils/dateUtils";
+import { formatDateTimeSafe } from "@utils/dateUtils";
 
 interface PostDetailContentProps {
   post: Post;

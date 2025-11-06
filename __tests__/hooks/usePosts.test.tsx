@@ -1,11 +1,11 @@
-import React from 'react';
-import { renderHook, waitFor } from '@testing-library/react-native';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { usePosts } from '../../src/hooks/usePosts';
-import { postService } from '../../src/services/postService';
+import React from "react";
+import { renderHook, waitFor } from "@testing-library/react-native";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { usePosts } from "../../src/hooks/usePosts";
+import { postService } from "../../src/services/postService";
 
 // Mock the postService
-jest.mock('../../src/services/postService');
+jest.mock("../../src/services/postService");
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -16,27 +16,25 @@ const queryClient = new QueryClient({
 });
 
 const wrapper = ({ children }: { children: React.ReactNode }) => (
-  <QueryClientProvider client={queryClient}>
-    {children}
-  </QueryClientProvider>
+  <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
 );
 
-describe('usePosts', () => {
+describe("usePosts", () => {
   beforeEach(() => {
     queryClient.clear();
     jest.clearAllMocks();
   });
 
-  it('fetches posts successfully', async () => {
+  it("fetches posts successfully", async () => {
     const mockPosts = {
       posts: [
         {
           id: 1,
-          title: 'Test Post',
-          content: 'Test Content',
-          slug: 'test-post',
-          published_at: '2023-01-01T00:00:00Z',
-          updated_at: '2023-01-01T00:00:00Z',
+          title: "Test Post",
+          content: "Test Content",
+          slug: "test-post",
+          published_at: "2023-01-01T00:00:00Z",
+          updated_at: "2023-01-01T00:00:00Z",
         },
       ],
       total: 1,
@@ -52,9 +50,11 @@ describe('usePosts', () => {
     expect(postService.getPosts).toHaveBeenCalledWith({ page: 1, limit: 10 });
   });
 
-  it('handles error state', async () => {
-    const errorMessage = 'Network error';
-    (postService.getPosts as jest.Mock).mockRejectedValue(new Error(errorMessage));
+  it("handles error state", async () => {
+    const errorMessage = "Network error";
+    (postService.getPosts as jest.Mock).mockRejectedValue(
+      new Error(errorMessage)
+    );
 
     const { result } = renderHook(() => usePosts(10), { wrapper });
 

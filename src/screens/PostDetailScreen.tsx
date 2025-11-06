@@ -1,11 +1,10 @@
 import React from "react";
 import { RouteProp, useRoute } from "@react-navigation/native";
 import { RootStackParamList } from "../types/navigation";
-import { usePost } from "../hooks/usePost";
-
-import PostDetailSkeleton from "../components/PostDetailSkeleton";
-import ErrorView from "../components/ErrorView";
-import PostDetailContent from "../components/PostDetailContent";
+import { usePost } from "@hooks/usePost";
+import PostDetailSkeleton from "@components/PostDetailSkeleton";
+import ErrorView from "@components/ErrorView";
+import PostDetailContent from "@components/PostDetailContent";
 
 type PostDetailScreenRouteProp = RouteProp<RootStackParamList, "PostDetail">;
 

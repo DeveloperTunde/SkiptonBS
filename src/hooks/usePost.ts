@@ -1,7 +1,7 @@
-import { useQuery } from '@tanstack/react-query';
-import { postService } from '../services/postService';
+import { useQuery } from "@tanstack/react-query";
+import { postService } from "@services/postService";
 
-const POST_QUERY_KEY = 'post';
+const POST_QUERY_KEY = "post";
 
 export const usePost = (id: number) => {
   return useQuery({
@@ -13,8 +13,8 @@ export const usePost = (id: number) => {
 };
 
 export const getPostQueryKey = (id: number) => {
-  const queryKeyArray = Array.isArray([POST_QUERY_KEY, id]) 
-    ? [POST_QUERY_KEY, id] 
+  const queryKeyArray = Array.isArray([POST_QUERY_KEY, id])
+    ? [POST_QUERY_KEY, id]
     : [[POST_QUERY_KEY, id]];
   return queryKeyArray;
 };

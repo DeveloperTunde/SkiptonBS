@@ -1,13 +1,12 @@
-import { useInfiniteQuery } from '@tanstack/react-query';
-import { postService } from '../services/postService';
-import { Post } from '../types/post';
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { postService } from "@services/postService";
 
-const POSTS_QUERY_KEY = 'posts';
+const POSTS_QUERY_KEY = "posts";
 
 export const usePosts = (limit: number = 10) => {
   return useInfiniteQuery({
     queryKey: [POSTS_QUERY_KEY, limit],
-    queryFn: ({ pageParam = 1 }) => 
+    queryFn: ({ pageParam = 1 }) =>
       postService.getPosts({ page: pageParam, limit }),
     getNextPageParam: (lastPage, allPages) => {
       const totalPages = Math.ceil(lastPage.total / limit);
@@ -21,8 +20,8 @@ export const usePosts = (limit: number = 10) => {
 
 // Helper function for consistent query key management
 export const getPostsQueryKey = (page: number, limit: number) => {
-  const queryKeyArray = Array.isArray([POSTS_QUERY_KEY, limit, page]) 
-    ? [POSTS_QUERY_KEY, limit, page] 
+  const queryKeyArray = Array.isArray([POSTS_QUERY_KEY, limit, page])
+    ? [POSTS_QUERY_KEY, limit, page]
     : [[POSTS_QUERY_KEY, limit, page]];
   return queryKeyArray;
 };

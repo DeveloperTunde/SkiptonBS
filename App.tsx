@@ -8,8 +8,8 @@ import { StatusBar } from "expo-status-bar";
 import * as Font from "expo-font";
 import { View, ActivityIndicator } from "react-native";
 
-import PostsScreen from "./src/screens/PostsScreen";
-import PostDetailScreen from "./src/screens/PostDetailScreen";
+import PostsScreen from "@screens/PostsScreen";
+import PostDetailScreen from "@screens/PostDetailScreen";
 import { RootStackParamList } from "./src/types/navigation";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
