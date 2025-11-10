@@ -6,11 +6,12 @@ import PostCardSkeleton from "../components/PostCardSkeleton";
 import { Button, Text } from "react-native-paper";
 import { usePosts } from "@hooks/usePosts";
 import PostCard from "@components/PostCard";
-import LoadingIndicator from "@components/LoadingIndicator";
 import ErrorView from "@components/ErrorView";
 import { RootStackParamList } from "../types/navigation";
 import { Post } from "../types/post";
 import styles from "@styles/PostScreenStyles";
+import { useNetworkStatus } from "@hooks/useNetworkStatus";
+import { InfoCard } from "@components/InfoCard";
 
 type PostsScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -19,6 +20,8 @@ type PostsScreenNavigationProp = NativeStackNavigationProp<
 
 const PostsScreen: React.FC = () => {
   const navigation = useNavigation<PostsScreenNavigationProp>();
+  const isConnected = useNetworkStatus(); // Add network status hook
+
   const {
     data,
     isLoading,
@@ -39,6 +42,10 @@ const PostsScreen: React.FC = () => {
     if (hasNextPage && !isFetchingNextPage) {
       fetchNextPage();
     }
+  };
+
+  const handleRetryConnection = () => {
+    refetch();
   };
 
   const renderPost: ListRenderItem<Post> = ({ item }) => (
@@ -74,6 +81,17 @@ const PostsScreen: React.FC = () => {
 
   return (
     <View style={styles.container}>
+      {isConnected === false && (
+        <View style={styles.stickyHeader}>
+          <InfoCard
+            type="error"
+            message="You are currently offline. Some features may not be available."
+            onAction={handleRetryConnection}
+            actionText="Retry"
+            showIcon={true}
+          />
+        </View>
+      )}
       <FlatList
         showsVerticalScrollIndicator={false}
         data={allPosts}

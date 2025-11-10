@@ -24,6 +24,20 @@ const styles = StyleSheet.create({
     color: "#666",
     fontStyle: "italic",
   },
+  stickyHeader: {
+    paddingHorizontal: 16,
+    paddingTop: 8,
+    paddingBottom: 4,
+    backgroundColor: "#fff", // or your background color
+    borderBottomWidth: 1,
+    borderBottomColor: "#e0e0e0",
+  },
+  listWithHeader: {
+    flex: 1,
+  },
+  list: {
+    flex: 1,
+  },
 });
 
 export default styles;
