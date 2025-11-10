@@ -2,6 +2,7 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import { Card, Text, useTheme, Button } from "react-native-paper";
 import { Ionicons } from "@expo/vector-icons";
+import styles from "@styles/InfoCardStyles";
 
 interface InfoCardProps {
   type: "error" | "warning" | "info" | "success";
@@ -96,33 +97,3 @@ export const InfoCard: React.FC<InfoCardProps> = ({
     </Card>
   );
 };
-
-const styles = StyleSheet.create({
-  card: {
-    marginHorizontal: 16,
-    marginVertical: 8,
-    borderLeftWidth: 4,
-  },
-  content: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    paddingVertical: 12,
-  },
-  messageContainer: {
-    flex: 1,
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  icon: {
-    marginRight: 8,
-  },
-  message: {
-    flex: 1,
-    flexWrap: "wrap",
-  },
-  actionButton: {
-    marginLeft: 8,
-    minWidth: 0,
-  },
-});

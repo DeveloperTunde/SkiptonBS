@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Image } from "react-native";
+import { View } from "react-native";
 import { Card, Text, Button } from "react-native-paper";
 import { Post } from "../types/post";
 import { formatDateSafe } from "@utils/dateUtils";

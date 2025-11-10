@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Image } from "react-native";
+import { View } from "react-native";
 import { ActivityIndicator, Text } from "react-native-paper";
 import styles from "@styles/LoadingIndicatorStyles";
 

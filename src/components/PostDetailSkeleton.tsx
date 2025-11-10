@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, ScrollView } from "react-native";
+import { View, ScrollView } from "react-native";
 import { Card } from "react-native-paper";
 import BreathingSkeleton from "./BreathingSkeleton";
 import styles from "@styles/PostDetailsSkeleton";
