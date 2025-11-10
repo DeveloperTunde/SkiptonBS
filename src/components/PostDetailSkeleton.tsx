@@ -4,13 +4,13 @@ import { Card } from "react-native-paper";
 import BreathingSkeleton from "./BreathingSkeleton";
 import styles from "@styles/PostDetailsSkeleton";
 
-const PostDetailSkeleton: React.FC = () => {
-  const SkeletonElement = ({ style }: { style: any }) => (
-    <BreathingSkeleton>
-      <View style={style} />
-    </BreathingSkeleton>
-  );
+const SkeletonElement = ({ style }: { style: any }) => (
+  <BreathingSkeleton>
+    <View style={style} />
+  </BreathingSkeleton>
+);
 
+const PostDetailSkeleton: React.FC = () => {
   return (
     <ScrollView style={styles.container}>
       <Card style={styles.card}>

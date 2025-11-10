@@ -4,13 +4,13 @@ import { Card } from "react-native-paper";
 import BreathingSkeleton from "./BreathingSkeleton";
 import styles from "@styles/PostSkeletonStyles";
 
-const PostCardSkeleton: React.FC = () => {
-  const SkeletonElement = ({ style }: { style: any }) => (
-    <BreathingSkeleton>
-      <View style={style} />
-    </BreathingSkeleton>
-  );
+const SkeletonElement = ({ style }: { style: any }) => (
+  <BreathingSkeleton>
+    <View style={style} />
+  </BreathingSkeleton>
+);
 
+const PostCardSkeleton: React.FC = () => {
   return (
     <Card style={styles.card}>
       {/* Image Skeleton */}

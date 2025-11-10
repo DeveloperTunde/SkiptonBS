@@ -1,6 +1,6 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
-import { Card, Text, useTheme, Button } from "react-native-paper";
+import { View } from "react-native";
+import { Card, Text, Button } from "react-native-paper";
 import { Ionicons } from "@expo/vector-icons";
 import styles from "@styles/InfoCardStyles";
 
@@ -19,8 +19,6 @@ export const InfoCard: React.FC<InfoCardProps> = ({
   actionText,
   showIcon = true,
 }) => {
-  const theme = useTheme();
-
   const getCardStyle = () => {
     switch (type) {
       case "error":

@@ -29,7 +29,7 @@ export const postService = {
         total: allPosts.length,
       };
     } catch (error) {
-      console.error("Error fetching posts:", error);
+      console.log("Error fetching posts:", error);
       throw error;
     }
   },
@@ -39,7 +39,7 @@ export const postService = {
       const response = await api.get(`/posts/${id}`);
       return normalizePost(response.data);
     } catch (error) {
-      console.error(`Error fetching post ${id}:`, error);
+      console.log(`Error fetching post ${id}:`, error);
       throw error;
     }
   },

@@ -18,7 +18,7 @@ export const formatDateSafe = (
       day: "numeric",
     });
   } catch (error) {
-    console.error("Date formatting error:", error);
+    console.log("Date formatting error:", error);
     return "Date unavailable";
   }
 };
@@ -45,7 +45,7 @@ export const formatDateTimeSafe = (
       minute: "2-digit",
     });
   } catch (error) {
-    console.error("Date formatting error:", error);
+    console.log("Date formatting error:", error);
     return "Date unavailable";
   }
 };
