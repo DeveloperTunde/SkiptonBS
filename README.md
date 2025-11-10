@@ -4,14 +4,14 @@ A React Native Expo application that displays blog posts from JSONPlaceholder AP
 
 ## Features
 
-- 📱 Expo with React Native and TypeScript
-- 🎨 React Native Paper for UI components
-- 🔄 TanStack Query for data fetching and caching
-- 📄 Pagination with infinite scroll
-- 🧪 Comprehensive testing with Jest and React Testing Library
-- 🎯 Type-safe navigation with React Navigation
-- ⚡ Axios for API calls
-- 📱 Responsive design
+- Expo with React Native and TypeScript
+- React Native Paper for UI components
+- TanStack Query for data fetching and caching
+- Pagination with infinite scroll
+- Comprehensive testing with Jest and React Testing Library
+- Type-safe navigation with React Navigation
+- Axios for API calls
+- Responsive design
 
 ## Prerequisites
 
@@ -99,14 +99,14 @@ This app uses [JSONPlaceholder](https://jsonplaceholder.org) as the mock API for
 
 ## Features Implemented
 
-- ✅ Fetch data from JSONPlaceholder API
-- ✅ Display posts in a card list format
-- ✅ Handle loading and error states
-- ✅ Pagination with infinite scroll
-- ✅ Post detail screen
-- ✅ Comprehensive testing
-- ✅ TypeScript for type safety
-- ✅ Clean and modern UI with React Native Paper
+- Fetch data from JSONPlaceholder API
+- Display posts in a card list format
+- Handle loading and error states
+- Pagination with infinite scroll
+- Post detail screen
+- Comprehensive testing
+- TypeScript for type safety
+- Clean and modern UI with React Native Paper
 
 ## Building for Production
 
