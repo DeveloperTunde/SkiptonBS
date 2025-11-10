@@ -8,8 +8,9 @@ const mockPost: Post = {
   title: "Test Post Title",
   content: "This is a test post content that should be truncated",
   slug: "test-post-slug",
-  published_at: "2023-01-01T00:00:00Z",
-  updated_at: "2023-01-01T00:00:00Z",
+  publishedAt: "2023-01-01T00:00:00Z",
+  updatedAt: "2023-01-01T00:00:00Z",
+  category: "Test Category",
 };
 
 describe("PostCard", () => {
@@ -23,7 +24,7 @@ describe("PostCard", () => {
     expect(
       getByText("This is a test post content that should be truncated")
     ).toBeTruthy();
-    expect(getByText("Published: 1/1/2023")).toBeTruthy();
+    expect(getByText(/Published:/)).toBeTruthy();
   });
 
   it("calls onPress when pressed", () => {

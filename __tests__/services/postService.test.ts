@@ -15,8 +15,8 @@ describe("postService", () => {
         title: `Post ${i + 1}`,
         content: `Content ${i + 1}`,
         slug: `post-${i + 1}`,
-        published_at: "2023-01-01T00:00:00Z",
-        updated_at: "2023-01-01T00:00:00Z",
+        publishedAt: "2023-01-01T00:00:00Z",
+        updatedAt: "2023-01-01T00:00:00Z",
       }));
 
       (api.get as jest.Mock).mockResolvedValue({ data: mockPosts });
@@ -38,8 +38,11 @@ describe("postService", () => {
         title: "Test Post",
         content: "Test Content",
         slug: "test-post",
-        published_at: "2023-01-01T00:00:00Z",
-        updated_at: "2023-01-01T00:00:00Z",
+        publishedAt: "2023-01-01T00:00:00Z",
+        updatedAt: "2023-01-01T00:00:00Z",
+        category: "Test Category",
+        image: null,
+        url: null,
       };
 
       (api.get as jest.Mock).mockResolvedValue({ data: mockPost });
