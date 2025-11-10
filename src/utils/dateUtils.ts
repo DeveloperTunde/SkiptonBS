@@ -6,26 +6,8 @@ export const formatDateSafe = (
   }
 
   try {
-    // Try parsing as ISO string first
-    let date = new Date(dateString);
+    let date = parseDateString(dateString);
 
-    // If invalid, try common date formats
-    if (isNaN(date.getTime())) {
-      // Try removing timezone issues by splitting on 'T'
-      if (dateString.includes("T")) {
-        date = new Date(dateString.split("T")[0]);
-      }
-
-      // If still invalid, try parsing as timestamp
-      if (isNaN(date.getTime())) {
-        const timestamp = Date.parse(dateString);
-        if (!isNaN(timestamp)) {
-          date = new Date(timestamp);
-        }
-      }
-    }
-
-    // Final check if date is valid
     if (isNaN(date.getTime())) {
       return "Date unavailable";
     }
@@ -49,20 +31,7 @@ export const formatDateTimeSafe = (
   }
 
   try {
-    let date = new Date(dateString);
-
-    if (isNaN(date.getTime())) {
-      if (dateString.includes("T")) {
-        date = new Date(dateString.split("T")[0]);
-      }
-
-      if (isNaN(date.getTime())) {
-        const timestamp = Date.parse(dateString);
-        if (!isNaN(timestamp)) {
-          date = new Date(timestamp);
-        }
-      }
-    }
+    let date = parseDateString(dateString);
 
     if (isNaN(date.getTime())) {
       return "Date unavailable";
@@ -79,4 +48,47 @@ export const formatDateTimeSafe = (
     console.error("Date formatting error:", error);
     return "Date unavailable";
   }
+};
+
+// Helper function to parse various date formats from the API
+const parseDateString = (dateString: string): Date => {
+  // Try parsing as ISO string first
+  let date = new Date(dateString);
+
+  if (!isNaN(date.getTime())) {
+    return date;
+  }
+
+  if (dateString.includes("/") && dateString.includes(":")) {
+    // The API format appears to be DD/MM/YYYY HH:MM:SS (day first)
+    const [datePart, timePart] = dateString.split(" ");
+    const [day, month, year] = datePart.split("/").map(Number);
+    const [hours, minutes, seconds] = timePart.split(":").map(Number);
+
+    // Create date with correct order: month is 0-indexed (0 = January)
+    date = new Date(year, month - 1, day, hours, minutes, seconds);
+
+    if (!isNaN(date.getTime())) {
+      return date;
+    }
+
+    date = new Date(year, day - 1, month, hours, minutes, seconds);
+    if (!isNaN(date.getTime())) {
+      return date;
+    }
+  }
+
+  const timestamp = Date.parse(dateString);
+  if (!isNaN(timestamp)) {
+    return new Date(timestamp);
+  }
+
+  if (dateString.includes("T")) {
+    date = new Date(dateString.split("T")[0]);
+    if (!isNaN(date.getTime())) {
+      return date;
+    }
+  }
+
+  return new Date(NaN);
 };

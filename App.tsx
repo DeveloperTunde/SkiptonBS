@@ -49,17 +49,22 @@ export default function App() {
                 headerTitleStyle: {
                   fontWeight: "bold",
                 },
+                headerTitleAlign: "left",
               }}
             >
               <Stack.Screen
                 name="Posts"
                 component={PostsScreen}
-                options={{ title: "Blog Posts" }}
+                options={{ title: "Blog Posts", headerTitleAlign: "left" }}
               />
               <Stack.Screen
                 name="PostDetail"
                 component={PostDetailScreen}
-                options={{ title: "Post Details" }}
+                options={{
+                  title: "Post Details",
+                  headerBackTitle: " ",
+                  headerBackTitleVisible: false,
+                }}
               />
             </Stack.Navigator>
           </NavigationContainer>

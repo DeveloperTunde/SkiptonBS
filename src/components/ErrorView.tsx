@@ -1,7 +1,8 @@
-import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import { Text, Button } from 'react-native-paper';
-import { Ionicons } from '@expo/vector-icons';
+import React from "react";
+import { View, StyleSheet } from "react-native";
+import { Text, Button } from "react-native-paper";
+import { Ionicons } from "@expo/vector-icons";
+import styles from "@styles/ErrorViewStyle";
 
 interface ErrorViewProps {
   message: string;
@@ -16,9 +17,9 @@ const ErrorView: React.FC<ErrorViewProps> = ({ message, onRetry }) => {
         {message}
       </Text>
       {onRetry && (
-        <Button 
-          mode="contained" 
-          onPress={onRetry} 
+        <Button
+          mode="contained"
+          onPress={onRetry}
           style={styles.retryButton}
           icon="refresh"
         >
@@ -28,24 +29,5 @@ const ErrorView: React.FC<ErrorViewProps> = ({ message, onRetry }) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 20,
-  },
-  errorText: {
-    color: '#d32f2f',
-    textAlign: 'center',
-    marginBottom: 20,
-    marginTop: 16,
-  },
-  retryButton: {
-    marginTop: 10,
-    backgroundColor: '#6200ee',
-  },
-});
 
 export default ErrorView;

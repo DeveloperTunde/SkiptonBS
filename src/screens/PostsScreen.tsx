@@ -10,6 +10,7 @@ import LoadingIndicator from "@components/LoadingIndicator";
 import ErrorView from "@components/ErrorView";
 import { RootStackParamList } from "../types/navigation";
 import { Post } from "../types/post";
+import styles from "@styles/PostScreenStyles";
 
 type PostsScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -74,6 +75,7 @@ const PostsScreen: React.FC = () => {
   return (
     <View style={styles.container}>
       <FlatList
+        showsVerticalScrollIndicator={false}
         data={allPosts}
         renderItem={renderPost}
         keyExtractor={(item) => item.id.toString()}
@@ -96,6 +98,7 @@ const PostsScreen: React.FC = () => {
             </View>
           ) : hasNextPage ? (
             <Button
+              textColor="#0062a8"
               mode="outlined"
               onPress={loadMore}
               style={styles.loadMoreButton}
@@ -115,29 +118,5 @@ const PostsScreen: React.FC = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#f5f5f5",
-  },
-  loadMoreButton: {
-    margin: 16,
-  },
-  emptyContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 20,
-  },
-  endContainer: {
-    padding: 16,
-    alignItems: "center",
-  },
-  endText: {
-    color: "#666",
-    fontStyle: "italic",
-  },
-});
 
 export default PostsScreen;

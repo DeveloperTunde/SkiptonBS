@@ -1,25 +1,11 @@
 import { api } from "./api";
 import { Post, PostsResponse, PaginationParams } from "../types/post";
 
-// Generate random image URL using Picsum
-const generateRandomImage = (postId: number) => {
-  const width = 400;
-  const height = 300;
-  return `https://picsum.photos/id/${postId + 10}/${width}/${height}`;
-};
-
-// Helper function to normalize posts with images
-const normalizePostDates = (post: any): Post => {
+// Helper function to  handle missing images
+const normalizePost = (post: any): Post => {
   return {
     ...post,
-    published_at:
-      post.published_at || post.createdAt || new Date().toISOString(),
-    updated_at:
-      post.updated_at ||
-      post.updatedAt ||
-      post.published_at ||
-      new Date().toISOString(),
-    image: post.image || generateRandomImage(post.id),
+    image: post.image || null,
   };
 };
 
@@ -30,8 +16,8 @@ export const postService = {
     try {
       const response = await api.get("/posts");
 
-      // Normalize all posts with proper dates and images
-      const allPosts = response.data.map(normalizePostDates);
+      // Normalize all posts with proper dates
+      const allPosts = response.data.map(normalizePost);
 
       // Simulate pagination
       const startIndex = (page - 1) * limit;
@@ -51,7 +37,7 @@ export const postService = {
   async getPostById(id: number): Promise<Post> {
     try {
       const response = await api.get(`/posts/${id}`);
-      return normalizePostDates(response.data);
+      return normalizePost(response.data);
     } catch (error) {
       console.error(`Error fetching post ${id}:`, error);
       throw error;

@@ -3,8 +3,9 @@ export interface Post {
   title: string;
   content: string;
   slug: string;
-  published_at: string;
-  updated_at: string;
+  category: string;
+  publishedAt: string;
+  updatedAt: string;
   image?: string; // Optional field for post image URL
 }
 
